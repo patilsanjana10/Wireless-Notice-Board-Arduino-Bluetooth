@@ -68,7 +68,8 @@ The circuit connects the **Arduino Uno**, **HC-05 Bluetooth Module**, and **16x2
 Below is the working prototype of the Wireless Notice Board.  
 The LCD displays the message **"JAI SHREE RAM"** sent wirelessly from a smartphone via Bluetooth HC-05.  
 
-![Prototype Output](C:\Users\patil\OneDrive\Desktop\Diag2.jpg)  
+![Prototype Output](![Diag2](https://github.com/user-attachments/assets/433dd387-864f-406c-9660-16668b65b1fc)
+)  
 
 ---
 
