@@ -1,0 +1,33 @@
+#include <Wire.h>            // Library for I2C communication
+#include <LiquidCrystal_I2C.h>  // Library for I2C LCD
+// Initialize the LCD with the I2C address (e.g., 0x27 or 0x3F, depending on your LCD module)
+LiquidCrystal_I2C lcd(0x27, 16, 2); 
+void setup() {
+  // Initialize the LCD
+  lcd.init();
+  lcd.backlight();
+  lcd.setCursor(0, 0);
+  lcd.print("Waiting for");
+  lcd.setCursor(0, 1);
+  lcd.print("Bluetooth...");
+  // Initialize serial communication
+  Serial.begin(9600); // Set to match Bluetooth module's default baud rate
+}
+void loop() {
+  // Check if Bluetooth data is available
+  if (Serial.available()) {
+    lcd.clear();  // Clear the LCD for new data
+    delay (100);   // Small delay for data to be ready
+    // Read incoming data
+    String message = "";
+    while (Serial.available()) {
+      char c = Serial.read(); // Read one character at a time
+      message += c;           // Append to the message
+    }
+    // Display the message on the LCD
+    lcd. setCursor(0, 0);
+    lcd.print("Message:");
+    lcd.setCursor(0, 1);
+    lcd.print(message);
+  }
+}
