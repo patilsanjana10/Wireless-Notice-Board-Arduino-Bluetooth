@@ -30,7 +30,27 @@ This makes it suitable for **schools, colleges, offices, hospitals, and public s
 - **Applications**: Schools, colleges, offices, hospitals, shopping malls, public spaces for **instant communication**.  
 - **Advantages**: Real-time updates, eco-friendly (no paper), cost-effective, compact.  
 - **Limitations**: Limited Bluetooth range (~10m), LCD text capacity, basic security.  
-- **Future Scope**: Upgrade with Wi-Fi/IoT for longer range, scrolling messages, mobile app integration.  
+- **Future Scope**: Upgrade with Wi-Fi/IoT for longer range, scrolling messages, mobile app integration.
+
+
+---
+## 🔌 Circuit Connections  
+
+The circuit connects the **Arduino Uno**, **HC-05 Bluetooth Module**, and **16x2 LCD with I2C** as follows:  
+
+- **HC-05 Bluetooth Module**  
+  - VCC → 5V  
+  - GND → GND  
+  - TXD → Pin 0 (RX) of Arduino  
+  - RXD → Pin 1 (TX) of Arduino  
+
+- **I2C LCD (16x2 Display)**  
+  - VCC → 5V  
+  - GND → GND  
+  - SDA → A4  
+  - SCL → A5  
+
+- **Power Supply**: Arduino powered via USB / 5V adapter.    
 
 ---
 
