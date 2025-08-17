@@ -1,84 +1,79 @@
-📌 Wireless Notice Board – Arduino + Bluetooth + P10 LED Panel
+# 📌 Wireless Notice Board – Arduino + Bluetooth + P10 LED Panel
 
-🔹 Project Overview
+## 🔹 Project Overview
 
-A wireless digital notice board that allows sending messages via Bluetooth to an Arduino, which then displays the message on a P10 LED panel.
+* A **wireless digital notice board** that allows sending messages via **Bluetooth** to an **Arduino**, which then displays the message on a **P10 LED panel**.
+* Eliminates the need for wired notice boards.
+* Useful for **schools, colleges, offices, bus stations, and public places**.
 
-Eliminates the need for wired notice boards.
+---
 
-Useful for schools, colleges, offices, bus stations, and public places.
+## 🔹 Features
 
-🔹 Features
+* Wireless communication using **HC-05 Bluetooth module**.
+* **P10 LED panel** for bright and clear message display.
+* User-friendly **mobile app** for message sending.
+* **Low-cost** and easy-to-implement solution.
+* Portable and can be powered by adapter or battery.
 
-Wireless communication using HC-05 Bluetooth module.
+---
 
-P10 LED panel for bright and clear message display.
+## 🔹 Hardware Used
 
-User-friendly mobile app for message sending.
+* Arduino Uno / Mega
+* P10 LED Display Panel
+* HC-05 Bluetooth Module
+* Power Supply (5V)
+* Jumper Wires
 
-Low-cost and easy-to-implement solution.
+---
 
-Portable and can be powered by adapter or battery.
+## 🔹 Software Used
 
-🔹 Hardware Used
+* Arduino IDE (for programming)
+* Mobile Bluetooth Terminal App (to send messages)
 
-Arduino Uno / Mega
+---
 
-P10 LED Display Panel
+## 🔹 Working Principle
 
-HC-05 Bluetooth Module
+1. User types a message on the mobile app.
+2. Message is sent via Bluetooth (HC-05).
+3. Arduino receives the message.
+4. Arduino processes the string and displays it on the **P10 LED panel**.
 
-Power Supply (5V)
+---
 
-Jumper Wires
+## 🔹 Circuit Diagram / Connections
 
-🔹 Software Used
+* HC-05 → Arduino TX/RX pins
+* P10 Module → Arduino Digital Pins (with proper library support)
+* Power → 5V regulated supply
 
-Arduino IDE (for programming)
+---
 
-Mobile Bluetooth Terminal App (to send messages)
+## 🔹 Libraries Used
 
-🔹 Working Principle
+* **DMD2 Library** (for controlling P10 LED panels)
+* RGB Matrix
 
-User types a message on the mobile app.
+---
 
-Message is sent via Bluetooth (HC-05).
+## 🔹 Applications
 
-Arduino receives the message.
+* School/College Notice Boards
+* Railway/Bus Station Announcements
+* Office/Industry Information Display
+* Event Management
 
-Arduino processes the string and displays it on the P10 LED panel.
+---
 
-🔹 Circuit Diagram / Connections
+## 🔹 Future Improvements
 
-HC-05 → Arduino TX/RX pins
+* Wi-Fi (ESP8266/ESP32) instead of Bluetooth for long range.
+* Scrolling text and animations.
+* Voice-controlled input.
+* Multi-panel extension for larger displays.
 
-P10 Module → Arduino Digital Pins (with proper library support)
+---
 
-Power → 5V regulated supply
-
-<img width="881" height="366" alt="image" src="https://github.com/user-attachments/assets/40c52fcb-0045-41e6-a01a-e6a047976371" />
-
-🔹 Libraries Used
-
-DMD2 Library (for controlling P10 LED panels)
-RBX Matrix
-
-🔹 Applications
-
-School/College Notice Boards
-
-Railway/Bus Station Announcements
-
-Office/Industry Information Display
-
-Event Management
-
-🔹 Future Improvements
-
-Wi-Fi (ESP8266/ESP32) instead of Bluetooth for long range.
-
-Scrolling text and animations.
-
-Voice-controlled input.
-
-Multi-panel extension for larger displays.
