@@ -1,33 +1,76 @@
-#include <Wire.h>            // Library for I2C communication
-#include <LiquidCrystal_I2C.h>  // Library for I2C LCD
-// Initialize the LCD with the I2C address (e.g., 0x27 or 0x3F, depending on your LCD module)
-LiquidCrystal_I2C lcd(0x27, 16, 2); 
-void setup() {
-  // Initialize the LCD
-  lcd.init();
-  lcd.backlight();
-  lcd.setCursor(0, 0);
-  lcd.print("Waiting for");
-  lcd.setCursor(0, 1);
-  lcd.print("Bluetooth...");
-  // Initialize serial communication
-  Serial.begin(9600); // Set to match Bluetooth module's default baud rate
-}
-void loop() {
-  // Check if Bluetooth data is available
-  if (Serial.available()) {
-    lcd.clear();  // Clear the LCD for new data
-    delay (100);   // Small delay for data to be ready
-    // Read incoming data
-    String message = "";
-    while (Serial.available()) {
-      char c = Serial.read(); // Read one character at a time
-      message += c;           // Append to the message
-    }
-    // Display the message on the LCD
-    lcd. setCursor(0, 0);
-    lcd.print("Message:");
-    lcd.setCursor(0, 1);
-    lcd.print(message);
-  }
+SOURCE CODE 
+ 
+#include <SPI.h> 
+#include <DMD.h> 
+#include <TimerOne.h> 
+#include "Arial_black_16.h" 
+#include "Arial_Black_16_ISO_8859_1.h" 
+#include "Arial14.h" 
+#include "SystemFont5x7.h" 
+ 
+#define DISPLAYS_ACROSS 1 // Number of P10 panels used, side by side. 
+#define DISPLAYS_DOWN 1 
+DMD dmd(DISPLAYS_ACROSS, DISPLAYS_DOWN); 
+ 
+char receivedText[100] = "WIRELESS NOTICE BOARD USING ARDUINO!"; // Buffer for 
+received text, default message. 
+boolean newMessage = false; 
+ 
+void ScanDMD() {  
+  dmd.scanDisplayBySPI(); 
+} 
+ 
+void setup(void) { 
+  Timer1.initialize(1000);           
+  Timer1.attachInterrupt(ScanDMD);    
+  dmd.clearScreen(true);    
+  Serial.begin(9600); // Initialize Serial for HC-05 communication. 
+} 
+ 
+void loop(void) { 
+  // Check if data is available from Bluetooth. 
+  if (Serial.available() > 0) { 
+    int i = 0; 
+    while (Serial.available() > 0 && i < sizeof(receivedText) - 1) { 
+      char receivedChar = Serial.read(); // Read one character. 
+      receivedText[i++] = receivedChar; 
+      delay(5); // Small delay to ensure data is properly received. 
+    } 
+    receivedText[i] = '\0'; // Null-terminate the string. 
+    newMessage = true; 
+  } 
+ 
+  // Display the message on the LED panel. 
+  dmd.selectFont(Arial_Black_16_ISO_8859_1); 
+  dmd.clearScreen(true); 
+WIRELESS NOTICE BOARD USING ARDUINO                                                                                          
+Dept. of E&CE, PDACEK 2024-25                                                                38 
+ 
+  dmd.drawMarquee(receivedText, strlen(receivedText), (32 * DISPLAYS_ACROSS) - 1, 0); 
+ 
+  long start = millis(); 
+  long timer = start; 
+  boolean ret = false; 
+  int interval = 100; 
+ 
+  while (!newMessage) { // Keep scrolling until a new message is received. 
+    if ((timer + interval) < millis()) { 
+      ret = dmd.stepMarquee(-1, 0); 
+      timer = millis(); 
+    } 
+ 
+    // Check for new data during scrolling. 
+    if (Serial.available() > 0) { 
+      int i = 0; 
+      while (Serial.available() > 0 && i < sizeof(receivedText) - 1) { 
+        char receivedChar = Serial.read(); // Read one character. 
+        receivedText[i++] = receivedChar; 
+        delay(5); // Small delay to ensure data is properly received. 
+      } 
+      receivedText[i] = '\0'; // Null-terminate the string. 
+      newMessage = true; 
+    } 
+  } 
+ 
+  newMessage = false; // Reset the message flag. 
 }
