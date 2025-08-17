@@ -1,96 +1,83 @@
-# 📢 Wireless Notice Board using Arduino & Bluetooth  
+📌 Wireless Notice Board – Arduino + Bluetooth + P10 LED Panel
+🔹 Project Overview
 
-> From smartphone to display in seconds — an Arduino-powered wireless notice board for real-time updates.  
+A wireless digital notice board that allows sending messages via Bluetooth to an Arduino, which then displays the message on a P10 LED panel.
 
-[![Arduino](https://img.shields.io/badge/Made%20with-Arduino-blue?logo=arduino)](https://www.arduino.cc/)  
-[![Bluetooth](https://img.shields.io/badge/Module-HC05-lightblue?logo=bluetooth)](https://www.electronicwings.com/nodemcu/hc-05-bluetooth-module)  
+Eliminates the need for wired notice boards.
 
----
+Useful for schools, colleges, offices, bus stations, and public places.
 
-## 🔎 Project Overview  
-The **Wireless Notice Board** replaces traditional paper-based notice boards with a **modern, eco-friendly solution**.  
-It uses an **Arduino Uno + Bluetooth HC-05** to receive text messages sent from a smartphone and display them on a **16x2 LCD (I2C)** or a **P10 LED panel** in **real-time**.  
+🔹 Features
 
-This makes it suitable for **schools, colleges, offices, hospitals, and public spaces** where announcements must be updated quickly.  
+Wireless communication using HC-05 Bluetooth module.
 
----
+P10 LED panel for bright and clear message display.
 
-## 📌 Project Highlights  
+User-friendly mobile app for message sending.
 
-- **Objective**: To design a **Wireless Notice Board** that displays messages sent wirelessly via a smartphone.  
-- **Technology Used**: Arduino Uno, Bluetooth HC-05, LCD (16x2 with I2C) / P10 LED panel.  
-- **Working Principle**:  
-  1. Message typed on smartphone (via Serial Bluetooth Terminal app).  
-  2. Sent to HC-05 Bluetooth module.  
-  3. Arduino receives & processes data.  
-  4. Message displayed on LCD / LED board in real-time.  
-- **Hardware Implemented**: Arduino Uno, HC-05 Bluetooth module, I2C LCD, regulated power supply, breadboard wiring.  
-- **Software Used**: Arduino IDE (for coding), Android app (Bluetooth Terminal).  
-- **Output**: Successfully displayed messages like *“JAI SHREE RAM”* on the LCD.  
-- **Applications**: Schools, colleges, offices, hospitals, shopping malls, public spaces for **instant communication**.  
-- **Advantages**: Real-time updates, eco-friendly (no paper), cost-effective, compact.  
-- **Limitations**: Limited Bluetooth range (~10m), LCD text capacity, basic security.  
-- **Future Scope**: Upgrade with Wi-Fi/IoT for longer range, scrolling messages, mobile app integration.
+Low-cost and easy-to-implement solution.
 
+Portable and can be powered by adapter or battery.
 
----
-## 🔌 Circuit Connections  
+🔹 Hardware Used
 
-The circuit connects the **Arduino Uno**, **HC-05 Bluetooth Module**, and **16x2 LCD with I2C** as follows:  
+Arduino Uno / Mega
 
-- **HC-05 Bluetooth Module**  
-  - VCC → 5V  
-  - GND → GND  
-  - TXD → Pin 0 (RX) of Arduino  
-  - RXD → Pin 1 (TX) of Arduino  
+P10 LED Display Panel
 
-- **I2C LCD (16x2 Display)**  
-  - VCC → 5V  
-  - GND → GND  
-  - SDA → A4  
-  - SCL → A5  
+HC-05 Bluetooth Module
 
-- **Power Supply**: Arduino powered via USB / 5V adapter.    
+Power Supply (5V)
 
----
+Jumper Wires
 
-## ⚙️ Features  
-✔️ Wireless message updates via smartphone  
-✔️ Supports LCD (16x2 with I2C) and P10 LED display  
-✔️ Easy to use with Android app (Serial Bluetooth Terminal)  
-✔️ Eco-friendly alternative to paper-based notices  
-✔️ Low-cost and portable system  
+🔹 Software Used
 
----
+Arduino IDE (for programming)
 
-## 📸 Prototype Output  
+Mobile Bluetooth Terminal App (to send messages)
 
-Below is the working prototype of the Wireless Notice Board.  
-The LCD displays the message **"JAI SHREE RAM"** sent wirelessly from a smartphone via Bluetooth HC-05.  
+🔹 Working Principle
 
-![Prototype Output](![Diag2](https://github.com/user-attachments/assets/433dd387-864f-406c-9660-16668b65b1fc)
-)  
+User types a message on the mobile app.
 
----
+Message is sent via Bluetooth (HC-05).
 
-## 📜 Applications  
+Arduino receives the message.
 
-- **Educational Institutions** 🏫 – announcements, exam schedules, notices.  
-- **Corporate Offices** 🏢 – meeting schedules, alerts, greetings.  
-- **Public Spaces** 🚉 – bus/train updates, emergency alerts.  
-- **Hospitals** 🏥 – doctor availability, health tips, queue info.  
-- **Shopping Malls / Retail** 🛍️ – offers, ads, promotions.  
-- **Smart Homes** 🏠 – reminders, alerts, IoT integration.  
+Arduino processes the string and displays it on the P10 LED panel.
 
----
+🔹 Circuit Diagram / Connections
 
-## 🔮 Future Improvements  
+HC-05 → Arduino TX/RX pins
 
-- Add Wi-Fi (ESP8266/ESP32) for longer range than Bluetooth.  
-- Support for scrolling text on P10 LED panel.  
-- Android app with custom UI (instead of Serial Bluetooth Terminal).  
-- Cloud/IoT integration for smart campus & industry.  
+P10 Module → Arduino Digital Pins (with proper library support)
 
+Power → 5V regulated supply
 
----
+<img width="881" height="366" alt="image" src="https://github.com/user-attachments/assets/40c52fcb-0045-41e6-a01a-e6a047976371" />
 
+🔹 Libraries Used
+
+DMD2 Library (for controlling P10 LED panels)
+RBX Matrix
+
+🔹 Applications
+
+School/College Notice Boards
+
+Railway/Bus Station Announcements
+
+Office/Industry Information Display
+
+Event Management
+
+🔹 Future Improvements
+
+Wi-Fi (ESP8266/ESP32) instead of Bluetooth for long range.
+
+Scrolling text and animations.
+
+Voice-controlled input.
+
+Multi-panel extension for larger displays.
