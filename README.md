@@ -1,4 +1,5 @@
 📌 Wireless Notice Board – Arduino + Bluetooth + P10 LED Panel
+
 🔹 Project Overview
 
 A wireless digital notice board that allows sending messages via Bluetooth to an Arduino, which then displays the message on a P10 LED panel.
